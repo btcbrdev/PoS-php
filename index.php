@@ -1,33 +1,19 @@
-<?php include 'partials/header.php'; ?>
+<?php include 'partials/header'; ?>
+<?php include 'partials/style.css'; ?>
+<title>PoS</title>
+<font face="Nexa Light" color="#e3e3e3">
+  <font color="#3e3e3e"><h1 align="center">Fa&ccedil;a Login</h1></font>
+  <br>
+  <center>
+    <div class="box">
+ <form action="create" type="POST">
+   <br>
+   Usu&aacute;rio: <br><input type="text" name="user"><br><br>
+  Senha: <br><input type="password" name="password"><br><br>
+  <button type="submit">Acessar</button><br><br>
+  </form>
+</div>
+ </center>
+ </font>
 
-    <!-- .login -->
-    <form class="login" action="create.php">
-        <!-- .login__head -->
-        <header class="login__head">
-            <h1 class="login__title">Acessar conta</h1>
-        </header>
-        <!-- /.login__head -->
-
-        <!-- .login__body -->
-        <div class="login__body">
-            <!-- .login-form -->
-            <ul class="login-form">
-                <li>
-                    <label for="" class="login-form__label">E-mail:</label>
-                    <input id="" name="" type="text" class="login-form__input input" />
-                </li>
-                <li>
-                    <label for="" class="login-form__label">Senha:</label>
-                    <input id="" name="" type="password" class="login-form__input input" />
-                </li>
-                <li>
-                    <button type="submit">Acessar</button>
-                </li>
-            </ul>
-            <!-- /.login-form -->
-        </div>
-        <!-- /.login__body -->
-    </form>
-    <!-- /.login -->
-
-<?php include 'partials/footer.php'; ?>
+<?php include 'partials/footer'; ?>

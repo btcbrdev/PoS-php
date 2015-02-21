@@ -1,7 +1,6 @@
-<!DOCTYPE HTML>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title></title>
-</head>
-<body>
+<!DOCTYPE html>
+<html lang="pt-BR">
+   <head>
+	  <meta charset="UTF-8">
+   </head>
+<body bgcolor="e3e3e3">

@@ -1,40 +1,50 @@
-<?php include 'partials/header.php'; ?>
+<?php include 'partials/header'; ?>
+<?php include 'partials/style.css'; ?>
 
-    <!-- .create -->
-    <form class="create" action="invoice.php">
-        <!-- .create__head -->
-        <header class="create__head">
-            <h1 class="create__title">Criar Fatura</h1>
-        </header>
-        <!-- /.create__head -->
+<title>Criar Fatura | PoS</title>
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+if (isset($_GET['password']) && $_GET['password'] == '123456' and ($_GET['user']) && $_GET['user'] == 'admin'){
+    $_SESSION['valida'] = 1;
+}
+if ($_SESSION['valida'] != 1) {
+    echo '<br><br><center><h1>ACESSO NEGADO!</h1></center>';
+    unset($_SESSION['valida']);
+    EXIT();
+}
+if (isset($_GET['logout']) && $_GET['logout'] == 'ok') {
+    unset($_SESSION['valida']);
+    session_destroy();
+    EXIT();
+}
+$lastBTC = json_decode(file_get_contents("https://blockchain.info/ticker"), true)[BRL][last];
+?>
 
-        <!-- .create__body -->
-        <div class="create__body">
-            <!-- .create-form -->
-            <ul class="create-form">
-                <li>
-                    <label for="" class="create-form__label">Cotação:</label>
-                    R$ 600,00
-                </li>
-                <li>
-                    <label for="" class="create-form__label">Valor em R$:</label>
-                    <input id="" name="" type="text" class="create-form__input input" />
-                    BTC: 0.00426348
-                </li>
-                <li>
-                    <label for="" class="create-form__label">Notas:</label>
-                    <textarea id="" name="" rows="6" class="create-form__textarea"></textarea>
-                </li>
-                <li>
-                    <button type="submit">Gerar Fatura</button>
-                </li>
-            </ul>
-            <!-- /.create-form -->
+   <header>
+    <font face="Nexa Light" color="#3e3e3e"><h1 align="center">Criar Fatura</h1></font>
+   </header>
+   <center>
+   <div class="box">
+   <font face="Nexa Light" color="#e3e3e3" size="4px">
+   <form action="invoice" type="POST">
+      <br>
+       <label>Cota&ccedil;&atilde;o: R$ <font face="Axis"><?php echo $lastBTC; ?></font></label>
+      <br><br>
+       <label>Valor em R$:</label>
+       <input name="value" type="text">
+      <br><br>
+       <label>Notas:</label><br>
+       <textarea name="note" rows="1" cols="15"></textarea>
+      <br><br>
+       <button type="submit">Gerar Fatura</button>
+      <br><br>
+   </form>
+   </font>
+   </div>
+   <br>
+   <a href="report">Relatórios de Pagamento</a>
+   </center>
 
-            <a href="report.php">Relatórios de Pagamento</a>
-        </div>
-        <!-- /.create__body -->
-    </div>
-    <!-- /.create -->
-
-<?php include 'partials/footer.php'; ?>
+<?php include 'partials/footer'; ?>
