@@ -1,21 +1,21 @@
 <?php include 'partials/header'; ?>
 
 <?php
-require 'config.php';
 $newAddr = json_decode(file_get_contents("https://blockchain.info/api/receive?method=create&address=$receivingAddress"), true)[input_address];
-$value = $_GET['value'];
+
+$currency = $_GET['currency'];
+$value = number_format($_GET['value'], 2);
 $note = $_GET['note'];
-$value = $_GET['value'];
-$topay = number_format(file_get_contents("https://blockchain.info/tobtc?currency=BRL&value=$value"), 8);
-date_default_timezone_set("America/Maceio");
+
+$topay = file_get_contents("https://blockchain.info/tobtc?currency=$currency&value=$value");
+
 $date = date("G:i:s - d/m/Y");
 ?>
     <title><?php echo $note; ?> | PoS</title>
    <header>
-    <font face="Century Gothic" color="3e3e3e"><h1 align="center">Fatura #1</h1></font>
+    <h1>Fatura #1</h1>
    </header>
-   <center>
-    Valor: R$<?php echo $value; ?><br>
+    Valor em <?php echo $currency; ?>: <?php echo $value; ?><br>
     Transfira exatamente: <?php echo $topay; ?> BTC<br>
     <a href=""><?php echo $newAddr; ?></a><br>
     <img src="https://blockchain.info/qr?data=bitcoin:<?php echo $newAddr; ?>?amount=<?php echo $topay; ?>&label=label&message=nota&size=200" alt=""><br>
@@ -23,7 +23,6 @@ $date = date("G:i:s - d/m/Y");
     Expira em: 7:26<br>
     Data: <?php echo $date; ?><br>
     <div class="invoice-progress"></div><br>
-    </center>
 
 <?php include 'partials/footer'; ?>
 

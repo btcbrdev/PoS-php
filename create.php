@@ -1,50 +1,51 @@
 <?php include 'partials/header'; ?>
-<?php include 'partials/style.css'; ?>
 
-<title>Criar Fatura | PoS</title>
 <?php
 if (!isset($_SESSION)) {
     session_start();
 }
-if (isset($_GET['password']) && $_GET['password'] == '123456' and ($_GET['user']) && $_GET['user'] == 'admin'){
+
+if (isset($_GET['password']) && $_GET['password'] == '123' and ($_GET['user']) && $_GET['user'] == 'admin'){
     $_SESSION['valida'] = 1;
 }
+
 if ($_SESSION['valida'] != 1) {
     echo '<br><br><center><h1>ACESSO NEGADO!</h1></center>';
     unset($_SESSION['valida']);
-    EXIT();
+    exit();
 }
+
 if (isset($_GET['logout']) && $_GET['logout'] == 'ok') {
     unset($_SESSION['valida']);
     session_destroy();
-    EXIT();
+    exit();
 }
-$lastBTC = json_decode(file_get_contents("https://blockchain.info/ticker"), true)[BRL][last];
+$currecies = json_decode(file_get_contents("https://blockchain.info/ticker"), true);
 ?>
 
    <header>
-    <font face="Nexa Light" color="#3e3e3e"><h1 align="center">Criar Fatura</h1></font>
+    <h1>Criar Fatura</h1>
    </header>
-   <center>
-   <div class="box">
-   <font face="Nexa Light" color="#e3e3e3" size="4px">
-   <form action="invoice" type="POST">
-      <br>
-       <label>Cota&ccedil;&atilde;o: R$ <font face="Axis"><?php echo $lastBTC; ?></font></label>
-      <br><br>
-       <label>Valor em R$:</label>
-       <input name="value" type="text">
-      <br><br>
-       <label>Notas:</label><br>
-       <textarea name="note" rows="1" cols="15"></textarea>
-      <br><br>
-       <button type="submit">Gerar Fatura</button>
-      <br><br>
+
+    <form action="invoice.php" type="GET">
+        <div style="margin-bottom:12px;">
+            <label>Valor:</label>
+            <input name="value" type="text">
+            <select id="" name="currency">
+                <?php foreach ($currecies as $currency => $value) : ?>
+                <option value="<?php echo $currency; ?>"><?php echo $currency; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+
+        <div style="margin-bottom:12px;">
+           <label>Notas:</label>
+           <textarea name="note" rows="3"></textarea>
+        </div>
+
+        <button type="submit">Gerar Fatura</button>
    </form>
-   </font>
-   </div>
-   <br>
+
    <a href="report">Relatórios de Pagamento</a>
-   </center>
 
 <?php include 'partials/footer'; ?>
