@@ -26,7 +26,7 @@ $currecies = json_decode(file_get_contents("https://blockchain.info/ticker"), tr
 <?php if ($_POST) : ?>
 
 <?php
-	include("class/PDO/Db.class.php");
+	include("partials/PDO/Db.class.php");
 
     $user_id = 1;
     $currency = $_POST['currency'];
