@@ -23,11 +23,34 @@ if (isset($_GET['logout']) && $_GET['logout'] == 'ok') {
 $currecies = json_decode(file_get_contents("https://blockchain.info/ticker"), true);
 ?>
 
+<?php if ($_POST) : ?>
+
+<?php
+	include("class/PDO/Db.class.php");
+
+    $user_id = 1;
+    $currency = $_POST['currency'];
+    $currency_value = number_format($_POST['value'], 2);
+    $invoice_btc_value = file_get_contents("https://blockchain.info/tobtc?currency=$currency&value=$currency_value");
+    //$TIME = date("D M d Y H:i:s O");
+    //$ENDTIME = date("D M d Y H:i:s O", strtotime($TIME) + 600);
+
+    //$TIME = strtotime($TIME);
+    //$ENDTIME = strtotime($ENDTIME);
+
+	$db = new Db();
+
+	$db->query("INSERT INTO invoices (invoice_user_id, invoice_fiat, invoice_fiat_value, invoice_btc_value, invoice_paid) VALUES('$user_id', '$currency', '$currency_value', '$invoice_btc_value', '0')");
+?>
+
+
+<?php else : ?>
+
    <header>
     <h1>Criar Fatura</h1>
    </header>
 
-    <form action="invoice.php" type="GET">
+    <form action="<?php $_SERVER["PHP_SELF"] ?>" method="POST">
         <div style="margin-bottom:12px;">
             <label>Valor:</label>
             <input name="value" type="text">
@@ -46,6 +69,8 @@ $currecies = json_decode(file_get_contents("https://blockchain.info/ticker"), tr
         <button type="submit">Gerar Fatura</button>
    </form>
 
-   <a href="report">Relatórios de Pagamento</a>
+   <a href="report.php">Relatórios de Pagamento</a>
+
+<?php endif; ?>
 
 <?php include 'partials/footer'; ?>
