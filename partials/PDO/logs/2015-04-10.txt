@@ -1,0 +1,35 @@
+Time : 20:59:42
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'invoice_btn_value' in 'field list'
+Raw SQL : INSERT INTO invoices (invoice_user_id, invoice_fiat, invoice_fiat_value, invoice_btn_value, invoice_date, invoice_date_expiry) VALUES('1', 'USD', '2,000.00', '', '1428692382', '1428692982')
+
+Time : 20:57:20
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+Raw SQL : INSERT INTO invoices (invoice_user_id, invoice_fiat, invoice_fiat_value, invoice_btn_value) VALUES(1, USD, 2,000.00, )
+
+Time : 20:56:36
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ' 1428692196, 1428692796)' at line 1
+Raw SQL : INSERT INTO invoices (invoice_user_id, invoice_fiat_value, invoice_btn_value, invoice_date, invoice_date_expiry) VALUES(1, USD, 2,000.00, , 1428692196, 1428692796)
+
+Time : 20:56:19
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'USD' in 'field list'
+Raw SQL : INSERT INTO invoices (invoice_user_id, invoice_fiat_value, invoice_btn_value, invoice_date, invoice_date_expiry) VALUES(1, USD, 50.43, 0.21506248, 1428692179, 1428692779)
+
+Time : 20:54:34
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'USD' in 'field list'
+Raw SQL : INSERT INTO invoices (invoice_user_id, invoice_fiat, invoice_fiat_value, invoice_btn_value, invoice_date, invoice_date_expiry) VALUES(1, USD, 50.43, 0.21506248, 1428692074, 1428692674)
+
+Time : 20:53:12
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1428691992, 1428692592' at line 1
+Raw SQL : INSERT INTO invoices (invoice_user_id, invoice_fiat, invoice_fiat_value, invoice_btn_value, invoice_date, invoice_date_expiry) VALUES(1, USD, 50.43, 0.21548519), 1428691992, 1428692592
+
+Time : 20:51:41
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Fri Apr 10 2015 15:51:41 -0300, Fri Apr 10 2015 16:01:41 -0300' at line 1
+Raw SQL : INSERT INTO invoices (invoice_user_id, invoice_fiat, invoice_fiat_value, invoice_btn_value, invoice_date, invoice_date_expiry) VALUES(1, USD, 50.43, 0.21548519), Fri Apr 10 2015 15:51:41 -0300, Fri Apr 10 2015 16:01:41 -0300
+
+Time : 20:51:16
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''false', Fri Apr 10 2015 15:51:16 -0300, Fri Apr 10 2015 16:01:16 -0300' at line 1
+Raw SQL : INSERT INTO invoices (invoice_user_id, invoice_fiat, invoice_fiat_value, invoice_btn_value, invoice_paid, invoice_date, invoice_date_expiry) VALUES(1, USD, 50.43, 0.21503497), 'false', Fri Apr 10 2015 15:51:16 -0300, Fri Apr 10 2015 16:01:16 -0300
+
+Time : 20:50:57
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'false, Fri Apr 10 2015 15:50:57 -0300, Fri Apr 10 2015 16:00:57 -0300' at line 1
+Raw SQL : INSERT INTO invoices (invoice_user_id, invoice_fiat, invoice_fiat_value, invoice_btn_value, invoice_paid, invoice_date, invoice_date_expiry) VALUES(1, USD, 50.43, 0.21503497), false, Fri Apr 10 2015 15:50:57 -0300, Fri Apr 10 2015 16:00:57 -0300
