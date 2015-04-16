@@ -1,3 +1,4 @@
 *.swp
-partials/PDO/.settings.ini.php
+*.swo
+partials/PDO/settings.ini.php
 partials/PDO/logs/
