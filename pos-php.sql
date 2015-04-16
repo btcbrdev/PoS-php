@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Tempo de geração: 10/04/2015 às 17:24
+-- Tempo de geração: 16/04/2015 às 09:04
 -- Versão do servidor: 5.6.23-1~exp1~ubuntu5
 -- Versão do PHP: 5.6.4-4ubuntu5
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `invoices` (
 `invoice_id` int(11) NOT NULL,
   `invoice_user_id` int(11) NOT NULL,
+  `invoice_address` text COLLATE utf8_unicode_ci NOT NULL,
   `invoice_fiat` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
   `invoice_fiat_value` text COLLATE utf8_unicode_ci NOT NULL,
   `invoice_btc_value` text COLLATE utf8_unicode_ci NOT NULL,
@@ -36,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `invoices` (
   `invoice_date` text COLLATE utf8_unicode_ci NOT NULL,
   `invoice_date_expiry` text COLLATE utf8_unicode_ci NOT NULL,
   `invoice_note` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -49,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
   `user_name` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
   `user_password` varchar(120) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Índices de tabelas apagadas
@@ -75,12 +76,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de tabela `invoices`
 --
 ALTER TABLE `invoices`
-MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
