@@ -1,4 +1,4 @@
-<?php include 'partials/header'; ?>
+<?php include 'partials/header.php'; ?>
 
 <?php
 if (!isset($_SESSION)) {
@@ -107,4 +107,4 @@ $currecies = json_decode(file_get_contents("https://blockchain.info/ticker"), tr
 
 <?php endif; ?>
 
-<?php include 'partials/footer'; ?>
+<?php include 'partials/footer.php'; ?>

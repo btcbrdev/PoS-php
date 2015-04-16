@@ -1,4 +1,4 @@
-<?php include 'partials/header'; ?>
+<?php include 'partials/header.php'; ?>
 
 <?php
 	include("partials/PDO/Db.class.php");
@@ -27,4 +27,4 @@
         <div class="invoice-progress"></div><br>
     <?php endForeach; ?>
 
-<?php include 'partials/footer'; ?>
+<?php include 'partials/footer.php'; ?>

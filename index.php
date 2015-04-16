@@ -1,4 +1,4 @@
-<?php include 'partials/header'; ?>
+<?php include 'partials/header.php'; ?>
 
 <title>PoS</title>
 
@@ -9,4 +9,4 @@
   <button type="submit">Acessar</button><br><br>
   </form>
 
-<?php include 'partials/footer'; ?>
+<?php include 'partials/footer.php'; ?>
